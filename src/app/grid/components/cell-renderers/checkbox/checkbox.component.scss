@@ -1,0 +1,47 @@
+.customHeaderMenuButton,
+.customHeaderLabel,
+.customSortUpLabel,
+.customSortDownLabel {
+  font-size: 15px;
+}
+.customSortRemoveLabel {
+  font-size: 20px;
+}
+
+.customHeaderMenuButton {
+  float: right;
+  padding-right: 20px;
+}
+
+.customHeaderLabel  {
+  font-family: "Segoe UI Light";
+}
+
+.active {
+  color: cornflowerblue;
+}
+
+:host {
+  width: 100%;
+ }
+
+ .container-header-collumn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .sort {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .customSortUpLabel,
+  .customSortDownLabel {
+    margin: 0 0 -3px 0px;
+    width: 55%;
+  }
+ }
+
+

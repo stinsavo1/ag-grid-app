@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ag-grid-community/src/styles/ag-grid";
+@import "~ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material";
+
+@font-face {
+  font-family: "Segoe UI Regular";
+  src: url("./assets/fonts/SegoeUI.eot") format("embedded-opentype");
+  src: url("./assets/fonts/SegoeUI.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/SegoeUI.woff2") format("woff2"), url("./assets/fonts/SegoeUI.woff") format("woff"),
+    url("./assets/fonts/SegoeUI.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Segoe UI Light";
+  src: url("./assets/fonts/SegoeUI-Light.eot") format("embedded-opentype");
+  src: url("./assets/fonts/SegoeUI-Light.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/SegoeUI-Light.woff2") format("woff2"), url("./assets/fonts/SegoeUI-Light.woff") format("woff"),
+    url("./assets/fonts/SegoeUI-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ag-body-viewport {
+  font-family: "Segoe UI Regular";
+}
+
+.ag-status-bar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ag-name-value {
+  font-family: "Segoe UI Light";
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.ag-header-cell-sortable {
+  padding: 10px !important;
+}

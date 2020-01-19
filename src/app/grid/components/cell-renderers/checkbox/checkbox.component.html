@@ -1,0 +1,24 @@
+<div>
+  <label *ngIf="isCheckboxVisible" for="selectAll">
+    <input (change)="onChange($event)" [(ngModel)]="selectAll" id="selectAll" style="display: none;" type="checkbox">
+    <span [ngClass]="{'ag-icon-checkbox-unchecked': !selectAll,
+            'ag-icon-checkbox-checked': selectAll}" class="ag-icon">
+    </span>
+  </label>
+  <div class="container-header-collumn">
+    <span class="sort">
+      <span class="arrow" (click)="onSortRequested('asc', $event)" *ngIf="params.enableSorting" [ngClass]="ascSort"
+        class="customSortDownLabel">▲
+      </span>
+      <span class="arrow" (click)="onSortRequested('desc', $event)" *ngIf="params.enableSorting" [ngClass]="descSort"
+        class="customSortUpLabel">▼
+      </span>
+
+    </span>
+    <div class="customHeaderLabel">{{params.displayName}}</div>
+    <div #menuButton (click)="onMenuClicked()" *ngIf="params.enableMenu" class="customHeaderMenuButton">&#9776;</div>
+    <div (click)="onSortRequested('', $event)" *ngIf="params.enableSorting" [ngClass]="noSort"
+      class="customSortRemoveLabel">×
+    </div>
+  </div>
+</div>
