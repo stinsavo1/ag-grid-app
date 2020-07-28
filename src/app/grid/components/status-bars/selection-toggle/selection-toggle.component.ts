@@ -16,22 +16,18 @@ export class SelectionToggleComponent {
    */
   private selectedNodes = [];
 
-  private agInit(params: Params): void {
+  public agInit(params: Params): void {
     this.params = params;
   }
 
   /**
    * Show or hide 'selection' column
    */
-  private toggleSelectionMode(event): void {
+  public toggleSelectionMode(event): void {
     event.preventDefault();
     const visible = this.getCurrentVisibility();
-    if (visible) {
-      this.selectedNodes = this.params.api.getSelectedNodes();
-      this.params.api.deselectAll();
-    } else {
-      this.selectedNodes.forEach(node => node.setSelected(true));
-    }
+    this.selectedNodes = this.params.api.getSelectedNodes();
+    this.params.api.deselectAll();
     this.setColumnVisibility('selection', !visible);
   }
 

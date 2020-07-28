@@ -1,22 +1,16 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { AgGridAngular } from 'ag-grid-angular';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { GridApi, ColumnApi, GridOptions } from 'ag-grid-community';
-import { ListService } from '../core/services/list.service';
+import { ColumnApi, GridApi, GridOptions } from 'ag-grid-community';
 import { VideoService } from '../core/services/video.service';
 import { ViewItem } from '../shared/models/viewItem.mode';
-import { Item } from '../shared/models/item.model';
-import { ListResponse } from '../shared/models/searchList.model';
 import { RecordsCountComponent } from './components/status-bars/records-count/records-count.component';
 import { SelectedRecordsCountComponent } from './components/status-bars/selected-records-count/selected-records-count.component';
 import { SelectionToggleComponent } from './components/status-bars/selection-toggle/selection-toggle.component';
-import { CheckboxComponent } from './components/cell-renderers/checkbox/checkbox.component';
-import { selectionColumn } from './components/col-defs/selection-column';
 import { thumbnailColumn } from './components/col-defs/thumbnail-column';
 import { publishedAtColumn } from './components/col-defs/published-at-column';
 import { titleColumn } from './components/col-defs/title-column';
 import { descriptionColumn } from './components/col-defs/description-column';
+import { selectionColumn } from "./components/col-defs/selection-column";
 
 /**
  * Represent grid component with it configuration
@@ -28,8 +22,6 @@ import { descriptionColumn } from './components/col-defs/description-column';
 })
 export class GridComponent implements OnInit {
 
-  @ViewChild('agGrid', { static: true }) agGrid: AgGridAngular;
-
   /**
    * Grid data
    */
@@ -39,15 +31,14 @@ export class GridComponent implements OnInit {
     paginationAutoPageSize: true,
     suppressCellSelection: true,
     defaultColDef: {
-      sortable: true,
       resizable: true,
       filter: true,
     },
     statusBar: {
       statusPanels: [
-        { statusPanel: 'selectionToggleComponent', align: 'left' },
-        { statusPanel: 'countStatusBarComponent' },
-        { statusPanel: 'countSelectedRecordsComponent' }
+        {statusPanel: 'selectionToggleComponent', align: 'left'},
+        {statusPanel: 'countStatusBarComponent'},
+        {statusPanel: 'countSelectedRecordsComponent'}
       ]
     },
     rowHeight: 90,
@@ -55,8 +46,7 @@ export class GridComponent implements OnInit {
     frameworkComponents: {
       countStatusBarComponent: RecordsCountComponent,
       countSelectedRecordsComponent: SelectedRecordsCountComponent,
-      selectionToggleComponent: SelectionToggleComponent,
-      agColumnHeader: CheckboxComponent,
+      selectionToggleComponent: SelectionToggleComponent
     },
     columnDefs: [
       selectionColumn,
@@ -66,30 +56,12 @@ export class GridComponent implements OnInit {
       descriptionColumn,
     ],
     rowSelection: 'multiple',
-    popupParent: document.querySelector('body'),
     getContextMenuItems: (params) => this.getContextMenuItems(params),
     context: this
   };
 
 
-  constructor(private searchListService: ListService, private videoService: VideoService) {
-  }
-
-  /**
-   * Get data to display from response
-   */
-  static videoToView(list: ListResponse): ViewItem[] {
-    return list.items.map((item: Item) => {
-      return new ViewItem(
-        {
-          title: item.snippet.title,
-          publishedAt: item.snippet.publishedAt,
-          description: item.snippet.description,
-          thumbnail: item.snippet.thumbnails.default.url,
-          videoId: item.id.videoId
-        }
-      );
-    });
+  constructor(private videoService: VideoService) {
   }
 
   /**
@@ -120,21 +92,17 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rowData = this.searchListService.getVideos('john')
-      .pipe(
-        map(GridComponent.videoToView)
-      );
+    this.rowData = this.videoService.getVideos();
   }
 
   public onGridReady(event: { api: GridApi, columnApi: ColumnApi, type: string }): void {
-    this.agGrid.api.sizeColumnsToFit();
+    event.api.sizeColumnsToFit();
   }
 
   /**
    * Custom context menu
    */
   public getContextMenuItems(params): any[] {
-    console.log(params);
     const openInNewTabAction = () => {
       window.open(this.videoService.getVideoUrlById(params.node.data.videoId), '_blank');
     };

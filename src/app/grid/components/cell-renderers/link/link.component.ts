@@ -13,8 +13,8 @@ import { VideoService } from 'src/app/core/services/video.service';
 })
 export class LinkComponent implements ICellRendererAngularComp {
   private params: Params;
-  private url: string;
-  private title: string;
+  public url: string;
+  public title: string;
 
   constructor(private service: VideoService) { }
 

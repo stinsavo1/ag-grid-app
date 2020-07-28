@@ -1,20 +1,15 @@
 /**
- * Selection column settings
+ * Selection column configuration
  */
+import { CheckboxComponent } from "../cell-renderers/checkbox/checkbox.component";
+import { HeaderCheckboxComponent } from "../cell-renderers/checkbox/header.checkbox.component";
+
 export const selectionColumn = {
   headerName: '',
   field: 'selection',
-  checkboxSelection: true,
-  sortable: false,
-  filter: false,
-  suppressMenu: true,
   width: 50,
-  suppressSizeToFit: true,
+  cellRendererFramework: CheckboxComponent,
   hide: true,
-  headerComponentParams: (params) => {
-    const firstColumnIndex = 0;
-    const displayedColumns = params.columnApi.getAllDisplayedColumns();
-    return displayedColumns[firstColumnIndex] === params.column;
-  },
+  headerComponentFramework: HeaderCheckboxComponent
 };
 

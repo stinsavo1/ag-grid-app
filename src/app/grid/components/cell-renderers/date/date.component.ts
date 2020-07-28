@@ -11,7 +11,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class DateComponent implements ICellRendererAngularComp {
   private params: any;
-  private date: Date;
+  public date: Date;
 
   public agInit(params): void {
     this.params = params;

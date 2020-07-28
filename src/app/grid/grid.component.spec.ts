@@ -11,11 +11,11 @@ import { ImageComponent } from './components/cell-renderers/image/image.componen
 import { VideoService } from '../core/services/video.service';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
-import { ListService } from '../core/services/list.service';
 import { ListResponse } from '../shared/models/searchList.model';
 import { BrowserTestingModule } from '@angular/platform-browser/testing';
 
 describe('GridComponent', () => {
+  let mockSearchListService: VideoService & { http: VideoService["http"] extends Function ? (VideoService["http"] & jasmine.Spy) : VideoService["http"]; getVideoUrlById: VideoService["getVideoUrlById"] extends Function ? (VideoService["getVideoUrlById"] & jasmine.Spy) : VideoService["getVideoUrlById"]; getVideos: VideoService["getVideos"] extends Function ? (VideoService["getVideos"] & jasmine.Spy) : VideoService["getVideos"] };
   let component: GridComponent;
   let fixture: ComponentFixture<GridComponent>;
 
@@ -99,7 +99,7 @@ describe('GridComponent', () => {
     ]
   };
 
-  const mockSearchListService = jasmine.createSpyObj<ListService>('SearchListService', {
+  mockSearchListService = jasmine.createSpyObj<VideoService>('SearchListService', {
     getVideos: of(mockResponse)
   });
 
@@ -116,12 +116,12 @@ describe('GridComponent', () => {
         ImageComponent],
       providers: [
         {
-          provide: ListService,
+          provide: VideoService,
           useValue: mockSearchListService
         },
         {
           provide: VideoService,
-          useValue: { getVideoUrlById: () => '' }
+          useValue: {getVideoUrlById: () => ''}
         }
       ],
       imports: [

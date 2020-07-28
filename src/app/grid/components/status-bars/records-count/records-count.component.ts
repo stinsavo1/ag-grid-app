@@ -12,11 +12,11 @@ import { Component } from '@angular/core';
 export class RecordsCountComponent {
 
   private params: Params;
-  private count = 0;
+  public count = 0;
 
-  private agInit(params: Params): void {
+  public agInit(params: Params): void {
     this.params = params;
-    this.params.api.addEventListener('modelUpdated', this.onModelUpdate.bind(this));
+    this.params.api.addEventListener('modelUpdated', () => this.onModelUpdate());
   }
 
   /**

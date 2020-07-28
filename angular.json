@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "ag-grid-app"
+  "defaultProject": "ag-grid-app",
+  "cli": {
+    "analytics": "f56d87e3-ca42-494d-a6f6-8b0e5697bdc3"
+  }
 }

@@ -11,7 +11,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class ImageComponent implements ICellRendererAngularComp {
   private params: any;
-  private url: string;
+  public url: string;
 
   public agInit(params): void {
     this.params = params;

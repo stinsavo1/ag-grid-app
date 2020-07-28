@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~ag-grid-community/src/styles/ag-grid";
-@import "~ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material";
+@import "~ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham";
 
 @font-face {
   font-family: "Segoe UI Regular";
   src: url("./assets/fonts/SegoeUI.eot") format("embedded-opentype");
   src: url("./assets/fonts/SegoeUI.eot?#iefix") format("embedded-opentype"),
-    url("./assets/fonts/SegoeUI.woff2") format("woff2"), url("./assets/fonts/SegoeUI.woff") format("woff"),
-    url("./assets/fonts/SegoeUI.ttf") format("truetype");
+  url("./assets/fonts/SegoeUI.woff2") format("woff2"), url("./assets/fonts/SegoeUI.woff") format("woff"),
+  url("./assets/fonts/SegoeUI.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -17,8 +17,8 @@
   font-family: "Segoe UI Light";
   src: url("./assets/fonts/SegoeUI-Light.eot") format("embedded-opentype");
   src: url("./assets/fonts/SegoeUI-Light.eot?#iefix") format("embedded-opentype"),
-    url("./assets/fonts/SegoeUI-Light.woff2") format("woff2"), url("./assets/fonts/SegoeUI-Light.woff") format("woff"),
-    url("./assets/fonts/SegoeUI-Light.ttf") format("truetype");
+  url("./assets/fonts/SegoeUI-Light.woff2") format("woff2"), url("./assets/fonts/SegoeUI-Light.woff") format("woff"),
+  url("./assets/fonts/SegoeUI-Light.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -41,4 +41,10 @@
 
 .ag-header-cell-sortable {
   padding: 10px !important;
+}
+
+.ag-cell-focus {
+  border-color: #ffffff !important;
+  border-style: solid;
+  border-width: 0 1px 0 1px !important;
 }

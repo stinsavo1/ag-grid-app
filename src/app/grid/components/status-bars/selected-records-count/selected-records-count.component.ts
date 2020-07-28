@@ -10,13 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./selected-records-count.component.scss']
 })
 export class SelectedRecordsCountComponent {
-
-  private count = 0;
+  public count = 0;
   private params: Params;
 
-  private agInit(params: Params): void {
+  public agInit(params: Params): void {
     this.params = params;
-    this.params.api.addEventListener('selectionChanged', this.onSelectionChange.bind(this));
+    this.params.api.addEventListener('selectionChanged', () => this.onSelectionChange());
   }
 
   /**

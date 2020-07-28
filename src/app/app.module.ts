@@ -7,14 +7,11 @@ import { GridModule } from './grid/grid.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoService } from './core/services/video.service';
-import { ListService } from './core/services/list.service';
-import { NoContentComponent } from './no-content/no-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContainerComponent,
-    NoContentComponent
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +20,7 @@ import { NoContentComponent } from './no-content/no-content.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [VideoService, ListService],
+  providers: [VideoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,5 @@ export const publishedAtColumn = {
   field: 'publishedAt',
   suppressSizeToFit: true,
   cellRendererFramework: DateComponent,
-  sortable: true,
   filter: true
 };

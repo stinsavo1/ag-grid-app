@@ -1,5 +1,5 @@
 import { Item } from './item.model';
-import { PageInfo } from './pageInfo.mode';
+import { PageInfo } from './pageInfo.model';
 
 export class ListResponse {
   kind: string;
